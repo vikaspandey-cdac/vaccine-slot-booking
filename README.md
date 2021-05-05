@@ -28,8 +28,8 @@ python slot_booking.py --token=YOUR-TOKEN-HERE
 ```
 ### Use as Docker
 
-- Build the docker image using `docker build -t <image_name> .`
-- Run the code `docker run <image_name>`
+- Build the docker image using `docker build -t vaccine-slot . `
+- Run the code `docker run -it vaccine-slot`
 
 ### Third-Party Package Dependency:
 - ```tabulate``` : For displaying data in tabular format.
