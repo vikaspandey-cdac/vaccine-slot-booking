@@ -8,7 +8,7 @@ WORKDIR /code
 COPY requirements.txt .
 
 # install dependencies
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --trusted-host pypi.org -r requirements.txt
 
 # copy the content of the local src directory to the working directory
 COPY slot_booking.py .
