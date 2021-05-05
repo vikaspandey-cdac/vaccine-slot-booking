@@ -61,7 +61,7 @@ def main():
                                          ref_freq=refresh_freq)
 
             # check if token is still valid
-            beneficiaries_list = requests.get(BENEFICIARIES_URL, headers=request_header)
+            beneficiaries_list = requests.get(BENEFICIARIES_URL, headers=request_header, verify=False)
             if beneficiaries_list.status_code == 200:
                 token_valid = True
 

@@ -15,4 +15,4 @@ COPY slot_booking.py .
 COPY utils.py .
 
 # command to run on container start
-CMD [ "python", "./vaccine.py" ]
+CMD [ "python", "./slot_booking.py" ]

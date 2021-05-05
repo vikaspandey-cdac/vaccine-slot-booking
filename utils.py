@@ -53,7 +53,7 @@ def check_calendar(request_header, vaccine_type, district_dtls, minimum_slots, m
 
         options = []
         for district in district_dtls:
-            resp = requests.get(base_url.format(district['district_id'], tomorrow), headers=request_header)
+            resp = requests.get(base_url.format(district['district_id'], tomorrow), headers=request_header, verify=False)
 
             if resp.status_code == 401:
                 print('TOKEN INVALID')
@@ -111,7 +111,7 @@ def book_appointment(request_header, details):
     try:
         print('================================= ATTEMPTING BOOKING ==================================================')
 
-        resp = requests.post(BOOKING_URL, headers=request_header, json=details)
+        resp = requests.post(BOOKING_URL, headers=request_header, json=details, verify=False)
         print(f'Booking Response Code: {resp.status_code}')
         print(f'Booking Response : {resp.text}')
 
@@ -219,7 +219,7 @@ def get_districts():
         2. Lists all districts in that state, prompts to select required ones, and
         3. Returns the list of districts as list(dict)
     """
-    states = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states')
+    states = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states', verify=False)
 
     if states.status_code == 200:
         states = states.json()['states']
@@ -241,7 +241,7 @@ def get_districts():
         os.system("pause")
         sys.exit(1)
 
-    districts = requests.get(f'https://cdn-api.co-vin.in/api/v2/admin/location/districts/{state_id}')
+    districts = requests.get(f'https://cdn-api.co-vin.in/api/v2/admin/location/districts/{state_id}', verify=False)
     if districts.status_code == 200:
         districts = districts.json()['districts']
 
@@ -278,7 +278,7 @@ def get_beneficiaries(request_header):
         2. Prompts user to select the applicable beneficiaries, and
         3. Returns the list of beneficiaries as list(dict)
     """
-    beneficiaries = requests.get(BENEFICIARIES_URL, headers=request_header)
+    beneficiaries = requests.get(BENEFICIARIES_URL, headers=request_header, verify=False)
 
     if beneficiaries.status_code == 200:
         beneficiaries = beneficiaries.json()['beneficiaries']
@@ -344,7 +344,7 @@ def generate_token_OTP(mobile):
     data = {"mobile": mobile,
             "secret": "U2FsdGVkX1/3I5UgN1RozGJtexc1kfsaCKPadSux9LY+cVUADlIDuKn0wCN+Y8iB4ceu6gFxNQ5cCfjm1BsmRQ=="}
     print(f"Requesting OTP with mobile number {mobile}..")
-    txnId = requests.post(url='https://cdn-api.co-vin.in/api/v2/auth/generateMobileOTP', json=data)
+    txnId = requests.post(url='https://cdn-api.co-vin.in/api/v2/auth/generateMobileOTP', json=data, verify=False)
 
     if txnId.status_code == 200:
         txnId = txnId.json()['txnId']
@@ -357,7 +357,7 @@ def generate_token_OTP(mobile):
     data = {"otp": sha256(str(OTP).encode('utf-8')).hexdigest(), "txnId": txnId}
     print(f"Validating OTP..")
 
-    token = requests.post(url='https://cdn-api.co-vin.in/api/v2/auth/validateMobileOtp', json=data)
+    token = requests.post(url='https://cdn-api.co-vin.in/api/v2/auth/validateMobileOtp', json=data, verify=False)
     if token.status_code == 200:
         token = token.json()['token']
     else:
