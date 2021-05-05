@@ -170,12 +170,12 @@ pip install -r requirements.txt
 11. When a center with more than minimum number of slots is available, the script will make a beep sound - different frequency for different district. It will then display the available options as table:
 	```
 	===================================================================================  
-	Centers available in █████████████ from 01-05-2021 as of 2021-04-30 15:34:19: 1  
-	Centers available in █████████ from 01-05-2021 as of 2021-04-30 15:34:19: 0  
+	Centers available in █████████████ from 06-05-2021 as of 2021-05-05 09:51:46: 1  
+	Centers available in █████████ from 06-05-2021 as of 2021-05-05 09:52:46: 0  
 	+-------+----------------+------------+-------------+------------+------------------------------------------------------------------------------+  
 	| idx   | name           | district   | available   | date       | slots                                                                        |  
 	+=======+================+============+=============+============+==============================================================================+  
-	| 1     | █████████████  | █████████  | 30          | 01-05-2021 | ['09:00AM-10:00AM', '10:00AM-11:00AM', '11:00AM-12:00PM', '12:00PM-02:00PM'] |  
+	| 1     | █████████████  | █████████  | 30          | 06-05-2021 | ['09:00AM-10:00AM', '10:00AM-11:00AM', '11:00AM-12:00PM', '12:00PM-02:00PM'] |  
 	+-------+----------------+------------+-------------+------------+------------------------------------------------------------------------------+  
 	---------->  Wait 10 seconds for updated options OR  
 	---------->  Enter a choice e.g: 1.4 for (1st center 4th slot): 1.3
